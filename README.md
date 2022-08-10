@@ -1,4 +1,4 @@
-In this step we want to see how you implement a command-line (CLI) program that lets you manage your tasks.
+Through this step we want to see how you implement a command-line (CLI) program that lets you manage your tasks.
 
 The specification for this problem is written down as tests. Since we haven’t actually implemented anything, the tests are currently failing. You have to solve the problem by implementing the application and getting all the tests to pass.
 
@@ -176,7 +176,11 @@ Completed : 3
    ```
    ./task.sh
    ```
-## Run Automated Tests
+## [Optional] Run Automated Tests
+
+>If you are able to set up npm by following the steps below, great! You can validate that your app works as expected.
+
+>Otherwise, we'll do this for you, when we are evaluating the project. In addition to the test cases mentioned here, we'll add on a few more during the evaluation.
 
 ### 1. Install Node.js
 

@@ -164,13 +164,13 @@ Completed : 3
 
 ### 1. Install Node.js
 
-You need to have npm installed in your computer for this problem. It comes with Node.js and you can get it by installing Node from https://nodejs.org/en/
+You need to have `npm` installed in your computer for the following steps. It comes with Node.js and you can get it by installing Node from https://nodejs.org/en/
 
 ### 2. Install dependencies
 
 Run `npm install` to install all dependencies.
 
-### 3. Create Create symbolic link to the executable file
+### 3. Create a symbolic link to the executable file
 
 #### On Windows
 
@@ -190,7 +190,7 @@ To create a symbolic link on Windows, you'll need to run either the Windows Comm
 
 #### On \*nix:
 
-Run the following command in your shell:
+Run the following command in your terminal:
 
 ```
 $ ln -s task.sh task
@@ -202,7 +202,7 @@ Now run `npm test` and you will see all the tests failing. As you fill in each f
 
 ## A Note about `/` for Windows Users
 
-In the following sections, you'll see many commands prefixed with `./`, or paths containing the `/` (forward-slash) character.
+In the previous sections, you might witness many commands prefixed with `./`, or paths containing the `/` (forward-slash) character.
 
 If you're using the Windows _Command Prompt_, then you'll need to replace `/` with `\` (back-slash) for these commands and paths to work as expected.
 
@@ -215,3 +215,5 @@ A few notes to help you avoid any hiccups while implementing the programming cha
 1. If you are on Windows, you might have difficulty getting the tests to pass because of newline UTF encoding issues. If you get stuck, please [refer to the thread here](https://github.com/nseadlc-2020/package-todo-cli-task/issues/12).
 
 2. In Windows machines, the `make` command might not exist and can prevent you from running the tests. This can be fixed [by using WSL, or installing MinGW, among other options](https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows).
+
+3. For any conceptual clarifications, look refer to the [course material](https://github.com/nive927/Short-term-Hands-on-Supplementary-Course-on-C-Programming#course-schedule), the [C/C++ documentation](https://en.cppreference.com/w/c/header), or just _Google_ them out!

@@ -16,7 +16,9 @@ typedef struct date Date;
 
 Date* initialize_date(int day, int month, int year) {
     Date *container = (Date*)malloc(sizeof(Date));
-    *(container) = { day, month, year };
+    container->day = day;
+    container->month = month;
+    container->year = year;
     return container;
 }
 
@@ -26,9 +28,11 @@ Date* get_current_local_date() {
     struct tm* formatted_time = localtime(&periodic_time);
 
     Date *local_date = initialize_date(
-        formatted_time->tm_mday;
-        formatted_time->tm_mon;
-        formatted_time->tm_year;
+        formatted_time->tm_mday,
+        // the time structure stores months from the range 0-11
+        1 + formatted_time->tm_mon,
+        // the time structure stores years since 1900!
+        1900 + formatted_time->tm_year 
     );
     return local_date;
 }
@@ -36,7 +40,7 @@ Date* get_current_local_date() {
 
 char* get_printable_date(Date *date){
     char *date_str = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
-    sprintf(date_str, "%4d-%2d-%2d", year, month, day);
+    sprintf(date_str, "%4d-%02d-%02d", date->year, date->month, date->day);
     return date_str;
 }
 
@@ -61,6 +65,6 @@ typedef struct completed_task CompletedTask;
 int main(int argc, char* argv[])
 {
     printf("Hello, World!");
-    printf("\nToday is: %s\n", get_printable_date(get_current_local_date));
+    printf("\nToday is: %s\n", get_printable_date(get_current_local_date()));
     return 0;
 }

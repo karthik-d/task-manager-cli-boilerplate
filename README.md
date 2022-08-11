@@ -19,7 +19,7 @@ Here's how it should work when you're done:
    2 Complete the project
    ```
 
-3. A completed task is written to a completed.dat binary file. Each task should enapsulate all fields of the original task, and include an additional `date_of_completion` field.
+3. A completed task is written to a completed.dat binary file. Each task should enapsulate all fields of the original task, and include an additional `date_of_completion` field that records _when_ the task is marked as done.
 
 4. Priority can be any integer _greater than_ or _equal to_ 0. 0 being the highest priority
 

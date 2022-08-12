@@ -65,9 +65,27 @@ Task* initialize_task(const char *text, int priority) {
     return container;
 } 
 
-short write_tasks_to_file(const Task **tasks, int num_tasks, const char *filepath) {
+short write_tasks_to_file(const Task **tasks, int num_tasks, const char *filepath, short append_tasks) {
     // open file, handle errors
-    FILE *f_out = fopen(filepath, "wb");
+    char *write_mode = (append_tasks ? "ab" : "wb");
+    FILE *f_out = fopen(filepath, write_mode);
+    if(f_out==NULL){
+        return -1;
+    }
+    // write to file, handle errors
+    // int write_size = 0;
+    int write_size = fwrite(*tasks, sizeof(Task), num_tasks, f_out);
+    if(write_size!=(num_tasks*sizeof(Task))){
+        return -1;
+    }
+    // close file
+    fclose(f_out);
+    return 0;
+}
+
+short read_tasks_from_file(const Task **tasks, int num_tasks, const char *filepath) {
+    // open file, handle errors
+    FILE *f_out = fopen(filepath, "rb");
     if(f_out==NULL){
         return -1;
     }
@@ -83,7 +101,6 @@ short write_tasks_to_file(const Task **tasks, int num_tasks, const char *filepat
 }
 
 
-
 struct completed_task  {
     Task task;
     Date date_of_completion;
@@ -97,7 +114,7 @@ int main(int argc, char* argv[])
     printf("\nToday is: %s\n", get_printable_date(get_current_local_date()));
 
     Task *test_task = initialize_task("Water the plants", 2);
-    if(!write_tasks_to_file(&test_task, 1, "testfile.dat")){
+    if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
         printf("Couldn't write tasks to file");
     };
 

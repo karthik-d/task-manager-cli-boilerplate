@@ -4,6 +4,7 @@
 #include <string.h>
 
 #define STD_STRING_SIZE 30
+#define STD_TASKS_COUNT 100
 
 
 /* Structure and Interface(s) to handle date */
@@ -73,8 +74,7 @@ short write_tasks_to_file(const Task **tasks, int num_tasks, const char *filepat
         return -1;
     }
     // write to file, handle errors
-    // int write_size = 0;
-    int write_size = fwrite(*tasks, sizeof(Task), num_tasks, f_out);
+    size_t write_size = fwrite(*tasks, sizeof(Task), num_tasks, f_out);
     if(write_size!=(num_tasks*sizeof(Task))){
         return -1;
     }
@@ -83,21 +83,39 @@ short write_tasks_to_file(const Task **tasks, int num_tasks, const char *filepat
     return 0;
 }
 
-short read_tasks_from_file(const Task **tasks, int num_tasks, const char *filepath) {
-    // open file, handle errors
-    FILE *f_out = fopen(filepath, "rb");
-    if(f_out==NULL){
-        return -1;
+
+Task* _read_single_task_from_filestream(const FILE *f_in)    {
+    Task t, *task;
+    size_t read_size = fread(&t, sizeof(Task), 1, f_in);
+    if(read_size==0){
+        return NULL;
     }
-    // write to file, handle errors
-    // int write_size = 0;
-    int write_size = fwrite(*tasks, sizeof(Task), num_tasks, f_out);
-    if(write_size!=(num_tasks*sizeof(Task))){
-        return -1;
+    printf("\n%d - ", read_size);
+    fflush(stdout);
+    // return initialize_task(strdup(t.task_text), t.priority);
+}
+
+
+Task** read_all_tasks_from_file(const char *filepath) {
+    Task **tasks = (Task**)malloc(sizeof(Task*)*STD_TASKS_COUNT);
+    // open file, handle errors
+    FILE *f_in = fopen(filepath, "rb");
+    if(f_in==NULL){
+        return NULL;
+    }
+    // read file, handle errors
+    int num_tasks = 0;
+    Task *t = _read_single_task_from_filestream(f_in);    
+    while(t!=NULL){
+        printf("\nDone ");
+        fflush(stdout);
+        *(tasks + num_tasks) = t;
+        num_tasks++;
+        t = _read_single_task_from_filestream(f_in);
     }
     // close file
-    fclose(f_out);
-    return 0;
+    fclose(f_in);
+    return tasks;
 }
 
 
@@ -114,6 +132,7 @@ int main(int argc, char* argv[])
     printf("\nToday is: %s\n", get_printable_date(get_current_local_date()));
 
     Task *test_task = initialize_task("Water the plants", 2);
+    Task **task_list = read_all_tasks_from_file("testfile.dat");
     if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
         printf("Couldn't write tasks to file");
     };

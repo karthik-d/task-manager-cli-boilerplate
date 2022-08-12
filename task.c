@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 #define STD_STRING_SIZE 30
+
 
 /* Structure and Interface(s) to handle date */
 
@@ -38,21 +40,48 @@ Date* get_current_local_date() {
 }
 
 
-char* get_printable_date(Date *date){
+char* get_printable_date(const Date *date)    {
     char *date_str = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
     sprintf(date_str, "%4d-%02d-%02d", date->year, date->month, date->day);
     return date_str;
 }
 
-
 /* ---------- */
 
+/* Structure and Interface(s) to handle task(s) */
 
 struct task {
     char *task_text;
     int priority;
 };
 typedef struct task Task;
+
+
+Task* initialize_task(const char *text, int priority) {
+    Task *container = (Task*)malloc(sizeof(Task));
+    container->task_text = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
+    strcpy(container->task_text, text);
+    container->priority = priority;
+    return container;
+} 
+
+short write_tasks_to_file(const Task **tasks, int num_tasks, const char *filepath) {
+    // open file, handle errors
+    FILE *f_out = fopen(filepath, "wb");
+    if(f_out==NULL){
+        return -1;
+    }
+    // write to file, handle errors
+    // int write_size = 0;
+    int write_size = fwrite(*tasks, sizeof(Task), num_tasks, f_out);
+    if(write_size!=(num_tasks*sizeof(Task))){
+        return -1;
+    }
+    // close file
+    fclose(f_out);
+    return 0;
+}
+
 
 
 struct completed_task  {
@@ -66,5 +95,11 @@ int main(int argc, char* argv[])
 {
     printf("Hello, World!");
     printf("\nToday is: %s\n", get_printable_date(get_current_local_date()));
+
+    Task *test_task = initialize_task("Water the plants", 2);
+    if(!write_tasks_to_file(&test_task, 1, "testfile.dat")){
+        printf("Couldn't write tasks to file");
+    };
+
     return 0;
 }

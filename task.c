@@ -54,17 +54,17 @@ char* get_printable_date(const Date *date)    {
 struct task {
     int priority;
     char text[STD_STRING_SIZE];   
-    // [Q]: Can you use a char* for text ?
+    // [Q]: Can you use a char* for text int the structure ?
 };
 typedef struct task Task;
 
 
 // Declarations
 Task* initialize_task(const char*, int);
-short write_tasks_to_file(const Task**, int, const char*, short);
+short write_tasks_to_file(Task**, int, const char*, short);
 char* get_printable_task(Task*);
 Task* _read_single_task_from_filestream(FILE*);
-Task** read_all_tasks_from_file(const char*);
+Task** read_all_tasks_from_file(const char*, int*);
 
 
 Task* initialize_task(const char *text, int priority) {
@@ -74,7 +74,7 @@ Task* initialize_task(const char *text, int priority) {
     return container;
 } 
 
-short write_tasks_to_file(const Task **tasks, int num_tasks, const char *filepath, short append_tasks) {
+short write_tasks_to_file(Task **tasks, int num_tasks, const char *filepath, short append_tasks) {
     // open file, handle errors
     char *write_mode = (append_tasks ? "ab" : "wb");
     FILE *f_out = fopen(filepath, write_mode);
@@ -94,6 +94,7 @@ short write_tasks_to_file(const Task **tasks, int num_tasks, const char *filepat
 
 Task* _read_single_task_from_filestream(FILE *f_in)    {
     Task t;
+    printf("--->%d<---", ftell(f_in));
     size_t read_size = fread(&t, sizeof(Task), 1, f_in);
     if(read_size==0){
         return NULL;
@@ -102,7 +103,7 @@ Task* _read_single_task_from_filestream(FILE *f_in)    {
 }
 
 
-Task** read_all_tasks_from_file(const char *filepath) {
+Task** read_all_tasks_from_file(const char *filepath, int *num_tasks) {
     Task **tasks = (Task**)malloc(sizeof(Task*)*STD_TASKS_COUNT);
     // open file, handle errors
     FILE *f_in = fopen(filepath, "rb");
@@ -110,15 +111,18 @@ Task** read_all_tasks_from_file(const char *filepath) {
         return NULL;
     }
     // read file, handle errors
-    int num_tasks = 0;
+    *num_tasks = 0;
     Task *t = _read_single_task_from_filestream(f_in);    
     while(t!=NULL){
-        *(tasks + num_tasks) = t;
-        num_tasks++;
+        *(tasks + *num_tasks) = t;
+        (*num_tasks)++;
         t = _read_single_task_from_filestream(f_in);
     }
     // close file
     fclose(f_in);
+    if(*num_tasks==0){
+        return NULL;
+    }
     return tasks;
 }
 
@@ -142,11 +146,19 @@ int main(int argc, char* argv[])
     printf("Hello, World!");
     printf("\nToday is: %s\n", get_printable_date(get_current_local_date()));
 
-    Task *test_task = initialize_task("Water the plants", 2);
-    if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
-        printf("Couldn't write tasks to file");
-    };
-    Task **task_list = read_all_tasks_from_file("testfile.dat");
-    printf(get_printable_task(*task_list));
+    // Task *test_task = initialize_task("Water the plants", 2);
+    // if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
+    //     printf("Couldn't write tasks to file");
+    // };
+
+    int num_tasks;
+    Task **task_list = read_all_tasks_from_file("testfile.dat", &num_tasks);
+    if(task_list==NULL) {
+        printf("\nNo tasks to read");
+    }
+    else{
+        printf(get_printable_task(*task_list));
+    }
+    printf("\n");
     return 0;
 }

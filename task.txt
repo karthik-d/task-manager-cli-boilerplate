@@ -1,2 +1,4 @@
 [ ] check 	 | 2
 [ ] hello 	 | 4
+[ ] new-hello 	 | 4
+[ ] new 	 | 1

@@ -101,7 +101,6 @@ Task* _read_single_task_from_filestream(FILE *f_in)    {
     char *task_line = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
     char priority_str[20];
     size_t read_size = fscanf(f_in, "[ ] %[^|\n]|%s\n", t.text, priority_str);
-    printf("\nRead size: %d | %s", read_size, t.text);
     if(read_size==-1){
         return NULL;
     }
@@ -178,6 +177,7 @@ int compare_Task(const void *a, const void *b)
 {
     Task *task_a = (Task*)a;
     Task *task_b = (Task*)b;
+    printf("\n%d %d", task_a->priority, task_b->priority);
 
     return task_b->priority - task_a->priority;
 }
@@ -192,7 +192,7 @@ void task_ls()
         return;
     }
     
-    qsort(task_list, num_tasks, sizeof(Task), compare_Task);
+    qsort(*task_list, num_tasks, sizeof(Task), compare_Task);
 
     printf("\n\n List of incomplete tasks:");
     for(int i=0; i<num_tasks; i++)

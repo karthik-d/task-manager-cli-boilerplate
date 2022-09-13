@@ -94,7 +94,7 @@ short write_tasks_to_file(Task **tasks, int num_tasks, const char *filepath, sho
 
 Task* _read_single_task_from_filestream(FILE *f_in)    {
     Task t;
-    printf("--->%d<---", ftell(f_in));
+    // printf("--->%ld<---\n\n", ftell(f_in));
     size_t read_size = fread(&t, sizeof(Task), 1, f_in);
     if(read_size==0){
         return NULL;
@@ -140,11 +140,52 @@ struct completed_task  {
 };
 typedef struct completed_task CompletedTask;
 
+void check_arguments(int argc, char* argv[])
+{
+    char print_text[STD_STRING_SIZE] = "";
+    printf("\n\nArguments");
+    for(int i=1; i<argc; i++)
+    {
+        strcat(print_text, argv[i]);
+    }
+    printf("\n\nargc: %d, argv[1:]:%s\n\n", argc, print_text);
+}
+
+void task_help()
+{
+    printf("\n\nUsage :-\n$ ./task add 2 walk cat # Add a new item with priority 2 and text 'walk cat' to the list\n$ ./task ls # Show incomplete priority list items sorted by priority in ascending order\n$ ./task del INDEX # Delete the incomplete item with the given index\n$ ./task done INDEX # Mark the incomplete item with the given index as complete\n$ ./task help # Show usage\n$ ./task report # Statistics\n\n");
+}
+
+void task_add(int task_priority, char* task_text)
+{
+    return;
+}
+
+void task_ls()
+{
+    return;
+}
+
+void task_del(int task_index)
+{
+    return;
+}
+
+void task_done(int task_index)
+{
+    return;
+}
+
+void task_report()
+{
+    return;
+}
 
 int main(int argc, char* argv[])
 {
-    printf("Hello, World!");
-    printf("\nToday is: %s\n", get_printable_date(get_current_local_date()));
+    // Change to todo Manager Header
+    printf("\n\nHello, World!");
+    printf("\nToday is: %s\n\n\n", get_printable_date(get_current_local_date()));
 
     // Task *test_task = initialize_task("Water the plants", 2);
     // if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
@@ -160,5 +201,96 @@ int main(int argc, char* argv[])
         printf(get_printable_task(*task_list));
     }
     printf("\n");
+
+    // Menu
+
+    char todo_text[STD_STRING_SIZE] = "";
+
+    check_arguments(argc, argv);
+
+    if(argc == 1)
+    {
+        task_help();
+    }
+
+    else if(strcmp(argv[1], "help") == 0)
+    {
+        if(argc == 2)
+        {
+            task_help();
+        }
+        else
+        {
+            printf("\n\nERROR: Too Many Arguments for help! Please use './task help' for Usage Information.");
+        }
+    }
+
+    else if(strcmp(argv[1], "add "))
+    {
+        if(argc == 4)
+        {
+            for(int i=3; i<argc; i++)
+            {
+                strcat(todo_text, argv[i]);
+            }
+            task_add(strtol(argv[2], NULL, 10), todo_text);
+        }
+        else
+        {
+            printf("\n\nERROR: Missing tasks string. Nothing added.");
+        }
+    }
+
+    else if(strcmp(argv[1], "ls "))
+    {
+        if(argc == 2)
+        {
+            task_ls();
+        }
+        else
+        {
+            printf("\n\nERROR: Too Many Arguments for ls! Please use './task help' for Usage Information.");
+        }
+    }
+
+    else if(strcmp(argv[1], "del "))
+    {
+        if(argc == 3)
+        {
+            int task_index = -1;
+            task_del(task_index); // return -1 if index not found and handle error
+        }
+        else
+        {
+            printf("\n\nERROR: Missing NUMBER for deleting tasks.");
+        }
+    }
+
+    else if(strcmp(argv[1], "done "))
+    {
+        if(argc == 3)
+        {
+            int task_index = -1;
+            task_done(task_index); // return -1 if index not found and handle error
+        }
+        else
+        {
+            printf("\n\nERROR: Missing NUMBER for marking tasks as done.");
+        }
+    }
+
+    else if(strcmp(argv[1], "report "))
+    {
+        if(argc == 2)
+        {
+            task_report();
+        }
+        else
+        {
+            printf("\n\nERROR: Too Many Arguments for report! Please use './task help' for Usage Information.");
+        }
+    }
+
+    printf("\n\n");
     return 0;
 }

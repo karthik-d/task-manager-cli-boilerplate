@@ -100,9 +100,9 @@ Task* _read_single_task_from_filestream(FILE *f_in)    {
     // printf("--->%ld<---\n\n", ftell(f_in));
     char *task_line = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
     char priority_str[20];
-    size_t read_size = fscanf(f_in, "[ ] %[^|\n]|%s", t.text, priority_str);
+    size_t read_size = fscanf(f_in, "[ ] %[^|\n]|%s\n", t.text, priority_str);
     printf("\nRead size: %d | %s", read_size, t.text);
-    if(read_size==0){
+    if(read_size==-1){
         return NULL;
     }
     // Encapsulate task_line to a structure

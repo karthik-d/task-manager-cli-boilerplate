@@ -158,11 +158,27 @@ void task_help()
 
 void task_add(int task_priority, char* task_text)
 {
+    Task *new_task = initialize_task(task_text, task_priority);
+    // append the new task on a new line to the file
+    if(!write_tasks_to_file(&new_task, 1, "task.dat", 1)){
+        printf("Couldn't write task to file");
+    };
     return;
 }
 
 void task_ls()
 {
+    // TODO: Add sorting stage
+    int num_tasks;
+    Task **task_list = read_all_tasks_from_file("task.dat", &num_tasks);
+    if(task_list==NULL || num_tasks==0) {
+        printf("\nNo tasks to display");
+    }
+    else{
+        for(int i=0; i<num_tasks; i++){
+            printf(get_printable_task((*task_list+i)));
+        }
+    }
     return;
 }
 
@@ -186,6 +202,7 @@ void task_menu(int argc, char* argv[])
     char todo_text[STD_STRING_SIZE] = "";
 
     check_arguments(argc, argv);
+    printf("-->%s", argv[1]);
 
     if(argc == 1)
     {
@@ -277,10 +294,10 @@ int main(int argc, char* argv[])
     printf("\n\nHello, World!");
     printf("\nToday is: %s\n\n\n", get_printable_date(get_current_local_date()));
 
-    Task *test_task = initialize_task("Water the plants", 2);
-    if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
-        printf("Couldn't write tasks to file");
-    };
+    // Task *test_task = initialize_task("Water the plants", 2);
+    // if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
+    //     printf("Couldn't write tasks to file");
+    // };
 
     // int num_tasks;
     // Task **task_list = read_all_tasks_from_file("testfile.dat", &num_tasks);

@@ -187,19 +187,19 @@ int main(int argc, char* argv[])
     printf("\n\nHello, World!");
     printf("\nToday is: %s\n\n\n", get_printable_date(get_current_local_date()));
 
-    // Task *test_task = initialize_task("Water the plants", 2);
-    // if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
-    //     printf("Couldn't write tasks to file");
-    // };
+    Task *test_task = initialize_task("Water the plants", 2);
+    if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
+        printf("Couldn't write tasks to file");
+    };
 
-    int num_tasks;
-    Task **task_list = read_all_tasks_from_file("testfile.dat", &num_tasks);
-    if(task_list==NULL) {
-        printf("\nNo tasks to read");
-    }
-    else{
-        printf(get_printable_task(*task_list));
-    }
+    // int num_tasks;
+    // Task **task_list = read_all_tasks_from_file("testfile.dat", &num_tasks);
+    // if(task_list==NULL) {
+    //     printf("\nNo tasks to read");
+    // }
+    // else{
+    //     printf(get_printable_task(*task_list));
+    // }
     printf("\n");
 
     // Menu

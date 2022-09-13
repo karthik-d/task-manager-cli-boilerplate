@@ -192,7 +192,8 @@ void task_ls()
         return;
     }
     
-    qsort(*task_list, num_tasks, sizeof(Task), compare_Task);
+    printf("\nNo. tasks: %d", num_tasks);
+    qsort(*task_list, num_tasks, sizeof(Task*), compare_Task);
 
     printf("\n\n List of incomplete tasks:");
     for(int i=0; i<num_tasks; i++)

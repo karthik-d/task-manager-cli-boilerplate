@@ -2,3 +2,4 @@
 [ ] hello 	 | 4
 [ ] new-hello 	 | 4
 [ ] new 	 | 1
+[ ] again hello | 4

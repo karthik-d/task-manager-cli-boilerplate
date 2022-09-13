@@ -161,8 +161,33 @@ void task_add(int task_priority, char* task_text)
     return;
 }
 
+int compare_Task(const void *a, const void *b)
+{
+    Task *task_a = (Task*)a;
+    Task *task_b = (Task*)b;
+
+    return task_b->priority - task_a->priority;
+}
+
 void task_ls()
 {
+    int num_tasks;
+    Task **task_list = read_all_tasks_from_file("testfile.dat", &num_tasks);
+    if(task_list==NULL)
+    {
+        printf("\n\nNo tasks to do.");
+        return;
+    }
+    
+    qsort(task_list, num_tasks, sizeof(Task), compare_Task);
+
+    printf("\n\n List of incomplete tasks:");
+    for(int i=0; i<num_tasks; i++)
+    {
+        printf("\n%d. %s \t | %d", i+1, task_list[i]->text, task_list[i]->text);
+    }
+
+    printf("\n");
     return;
 }
 
@@ -220,7 +245,7 @@ void task_menu(int argc, char* argv[])
         }
     }
 
-    else if(strcmp(argv[1], "ls "))
+    else if(strcmp(argv[1], "ls"))
     {
         if(argc == 2)
         {
@@ -282,14 +307,6 @@ int main(int argc, char* argv[])
         printf("Couldn't write tasks to file");
     };
 
-    // int num_tasks;
-    // Task **task_list = read_all_tasks_from_file("testfile.dat", &num_tasks);
-    // if(task_list==NULL) {
-    //     printf("\nNo tasks to read");
-    // }
-    // else{
-    //     printf(get_printable_task(*task_list));
-    // }
     printf("\n");
 
     // Menu

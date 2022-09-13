@@ -83,6 +83,7 @@ short write_tasks_to_file(Task **tasks, int num_tasks, const char *filepath, sho
     }
     // write to file, handle errors
     size_t write_size = fwrite(*tasks, sizeof(Task), num_tasks, f_out);
+    printf("Addding: %s", get_printable_task(*tasks));
     if(write_size!=(num_tasks*sizeof(Task))){
         return -1;
     }
@@ -160,6 +161,7 @@ void task_add(int task_priority, char* task_text)
 {
     Task *new_task = initialize_task(task_text, task_priority);
     // append the new task on a new line to the file
+    printf("--> %s <--", task_text);
     if(!write_tasks_to_file(&new_task, 1, "task.dat", 1)){
         printf("Couldn't write task to file");
     };
@@ -177,7 +179,7 @@ int compare_Task(const void *a, const void *b)
 void task_ls()
 {
     int num_tasks;
-    Task **task_list = read_all_tasks_from_file("testfile.dat", &num_tasks);
+    Task **task_list = read_all_tasks_from_file("task.dat", &num_tasks);
     if(task_list==NULL)
     {
         printf("\n\nNo tasks to do.");
@@ -189,7 +191,7 @@ void task_ls()
     printf("\n\n List of incomplete tasks:");
     for(int i=0; i<num_tasks; i++)
     {
-        printf(get_printable_task((*task_list+i)));
+        printf(get_printable_task(*(task_list+i)));
     }
     return;
 }
@@ -233,15 +235,15 @@ void task_menu(int argc, char* argv[])
         }
     }
 
-    else if(strcmp(argv[1], "add "))
+    else if(strcmp(argv[1], "add") == 0)
     {
-        if(argc == 4)
+        if(argc >= 4)
         {
-            for(int i=3; i<argc; i++)
+            for(int i=2; i<(argc-1); i++)
             {
                 strcat(todo_text, argv[i]);
             }
-            task_add(strtol(argv[2], NULL, 10), todo_text);
+            task_add(strtol(argv[argc-1], NULL, 10), todo_text);
         }
         else
         {
@@ -249,7 +251,7 @@ void task_menu(int argc, char* argv[])
         }
     }
 
-    else if(strcmp(argv[1], "ls"))
+    else if(strcmp(argv[1], "ls") == 0)
     {
         if(argc == 2)
         {
@@ -261,7 +263,7 @@ void task_menu(int argc, char* argv[])
         }
     }
 
-    else if(strcmp(argv[1], "del "))
+    else if(strcmp(argv[1], "del") == 0)
     {
         if(argc == 3)
         {
@@ -274,7 +276,7 @@ void task_menu(int argc, char* argv[])
         }
     }
 
-    else if(strcmp(argv[1], "done "))
+    else if(strcmp(argv[1], "done ") == 0)
     {
         if(argc == 3)
         {
@@ -287,7 +289,7 @@ void task_menu(int argc, char* argv[])
         }
     }
 
-    else if(strcmp(argv[1], "report "))
+    else if(strcmp(argv[1], "report ") == 0)
     {
         if(argc == 2)
         {

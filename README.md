@@ -137,6 +137,18 @@ Completed : 3
 
 ## Getting started
 
+
+### Getting the boilerplate code
+
+- Login to your GitHub account.
+
+- Access the repository from the [project starter page](https://github.com/karthik-d/C-Programming-Course_Project-Starter).
+
+- Follow the instructions here to `fork` the repository to your local desktop.
+
+
+### Running the code
+
 1. You should have a C compiler available for building the code.
 
 2. You are expected to write the code in `task.c` file.

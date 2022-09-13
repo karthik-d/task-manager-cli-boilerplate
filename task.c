@@ -76,16 +76,18 @@ Task* initialize_task(const char *text, int priority) {
 
 short write_tasks_to_file(Task **tasks, int num_tasks, const char *filepath, short append_tasks) {
     // open file, handle errors
-    char *write_mode = (append_tasks ? "ab" : "wb");
+    char *write_mode = (append_tasks ? "a" : "w");
     FILE *f_out = fopen(filepath, write_mode);
     if(f_out==NULL){
         return -1;
     }
     // write to file, handle errors
-    size_t write_size = fwrite(*tasks, sizeof(Task), num_tasks, f_out);
-    printf("Addding: %s", get_printable_task(*tasks));
-    if(write_size!=(num_tasks*sizeof(Task))){
-        return -1;
+    char *task_line;
+    size_t write_size;
+    for(int i=0; i<num_tasks; i++)  {
+        task_line = get_printable_task(*(tasks+i));
+        write_size = fprintf(f_out, task_line); 
+        printf("Addding: %s", task_line);
     }
     // close file
     fclose(f_out);
@@ -96,18 +98,22 @@ short write_tasks_to_file(Task **tasks, int num_tasks, const char *filepath, sho
 Task* _read_single_task_from_filestream(FILE *f_in)    {
     Task t;
     // printf("--->%ld<---\n\n", ftell(f_in));
-    size_t read_size = fread(&t, sizeof(Task), 1, f_in);
+    char *task_line = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
+    char priority_str[20];
+    size_t read_size = fscanf(f_in, "[ ] %[^|\n]|%s", t.text, priority_str);
+    printf("\nRead size: %d | %s", read_size, t.text);
     if(read_size==0){
         return NULL;
     }
-    return initialize_task(strdup(t.text), t.priority);
+    // Encapsulate task_line to a structure
+    return initialize_task(strdup(t.text), strtol(priority_str, NULL, 10));
 }
 
 
 Task** read_all_tasks_from_file(const char *filepath, int *num_tasks) {
     Task **tasks = (Task**)malloc(sizeof(Task*)*STD_TASKS_COUNT);
     // open file, handle errors
-    FILE *f_in = fopen(filepath, "rb");
+    FILE *f_in = fopen(filepath, "r");
     if(f_in==NULL){
         return NULL;
     }
@@ -130,7 +136,7 @@ Task** read_all_tasks_from_file(const char *filepath, int *num_tasks) {
 
 char* get_printable_task(Task *task)  {
     char *task_str = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
-    sprintf(task_str, "[ ] %s \t | %d", task->text, task->priority);
+    sprintf(task_str, "[ ] %s \t | %d\n", task->text, task->priority);
     return task_str;
 }
 
@@ -162,7 +168,7 @@ void task_add(int task_priority, char* task_text)
     Task *new_task = initialize_task(task_text, task_priority);
     // append the new task on a new line to the file
     printf("--> %s <--", task_text);
-    if(!write_tasks_to_file(&new_task, 1, "task.dat", 1)){
+    if(write_tasks_to_file(&new_task, 1, "task.txt", 1)){
         printf("Couldn't write task to file");
     };
     return;
@@ -179,7 +185,7 @@ int compare_Task(const void *a, const void *b)
 void task_ls()
 {
     int num_tasks;
-    Task **task_list = read_all_tasks_from_file("task.dat", &num_tasks);
+    Task **task_list = read_all_tasks_from_file("task.txt", &num_tasks);
     if(task_list==NULL)
     {
         printf("\n\nNo tasks to do.");
@@ -190,7 +196,7 @@ void task_ls()
 
     printf("\n\n List of incomplete tasks:");
     for(int i=0; i<num_tasks; i++)
-    {
+    {   
         printf(get_printable_task(*(task_list+i)));
     }
     return;

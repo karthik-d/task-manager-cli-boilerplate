@@ -83,11 +83,11 @@ short write_tasks_to_file(Task **tasks, int num_tasks, const char *filepath, sho
     }
     // write to file, handle errors
     char *task_line;
-    size_t write_size;
+
     for(int i=0; i<num_tasks; i++)  {
         task_line = get_printable_task(*(tasks+i));
-        write_size = fprintf(f_out, task_line); 
-        printf("Addding: %s", task_line);
+        fprintf(f_out, task_line); 
+        // printf("\nAdded task: %s", task_line);
     }
     // close file
     fclose(f_out);
@@ -98,7 +98,7 @@ short write_tasks_to_file(Task **tasks, int num_tasks, const char *filepath, sho
 Task* _read_single_task_from_filestream(FILE *f_in)    {
     Task t;
     // printf("--->%ld<---\n\n", ftell(f_in));
-    char *task_line = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
+    // char *task_line = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
     char priority_str[20];
     size_t read_size = fscanf(f_in, "[ ] %[^|\n]|%s\n", t.text, priority_str);
     if(read_size==-1){
@@ -166,20 +166,25 @@ void task_add(int task_priority, char* task_text)
 {
     Task *new_task = initialize_task(task_text, task_priority);
     // append the new task on a new line to the file
-    printf("--> %s <--", task_text);
+    // printf("--> %s <--", task_text);
     if(write_tasks_to_file(&new_task, 1, "task.txt", 1)){
-        printf("Couldn't write task to file");
+        printf("\nCouldn't write task to file.");
     };
+
+    printf("\n\nAdded task:\n");
+    printf(get_printable_task(new_task));
+
     return;
 }
 
 int compare_Task(const void *a, const void *b)
 {
-    Task *task_a = (Task*)a;
-    Task *task_b = (Task*)b;
-    printf("\n%d %d", task_a->priority, task_b->priority);
+    Task *task_a = *(Task**)a;
+    Task *task_b = *(Task**)b;
+    // printf("\n");
+    // printf("\ncompare task: %d %d", task_a->priority, task_b->priority);
 
-    return task_b->priority - task_a->priority;
+    return task_a->priority - task_b->priority;
 }
 
 void task_ls()
@@ -192,10 +197,9 @@ void task_ls()
         return;
     }
     
-    printf("\nNo. tasks: %d", num_tasks);
-    qsort(*task_list, num_tasks, sizeof(Task*), compare_Task);
+    qsort(task_list, num_tasks, sizeof(Task*), &compare_Task);
 
-    printf("\n\n List of incomplete tasks:");
+    printf("\n\nList of incomplete tasks:\n");
     for(int i=0; i<num_tasks; i++)
     {   
         printf(get_printable_task(*(task_list+i)));
@@ -222,8 +226,8 @@ void task_menu(int argc, char* argv[])
 {
     char todo_text[STD_STRING_SIZE] = "";
 
-    check_arguments(argc, argv);
-    printf("-->%s", argv[1]);
+    // check_arguments(argc, argv);
+    // printf("-->%s", argv[1]);
 
     if(argc == 1)
     {
@@ -249,7 +253,10 @@ void task_menu(int argc, char* argv[])
             for(int i=2; i<(argc-1); i++)
             {
                 strcat(todo_text, argv[i]);
+                if(i != argc - 1)
+                    strcat(todo_text, " ");
             }
+
             task_add(strtol(argv[argc-1], NULL, 10), todo_text);
         }
         else
@@ -312,15 +319,18 @@ void task_menu(int argc, char* argv[])
 int main(int argc, char* argv[])
 {
     // Change to todo Manager Header
-    printf("\n\nHello, World!");
-    printf("\nToday is: %s\n\n\n", get_printable_date(get_current_local_date()));
+    // printf("\n\nHello, World!");
+    // printf("\nToday is: %s\n\n\n", get_printable_date(get_current_local_date()));
 
     // Task *test_task = initialize_task("Water the plants", 2);
     // if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
     //     printf("Couldn't write tasks to file");
     // };
-
+    
     printf("\n");
+    printf("------------------------------------");
+    printf("\n\tTODO CLI Application\n");
+    printf("------------------------------------");
 
     // Menu
 

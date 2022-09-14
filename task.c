@@ -289,6 +289,38 @@ void task_done(int task_index)
 
 void task_report()
 {
+    int num_tasks;
+    Task **task_list = read_all_tasks_from_file("task.txt", &num_tasks);
+    if(task_list==NULL)
+    {
+        printf("\n\nNo tasks to do.");
+        return;
+    }
+    
+    qsort(task_list, num_tasks, sizeof(Task*), &compare_Task);
+
+    printf("\n\nPending: %d\n", num_tasks);
+    for(int i=0; i<num_tasks; i++)
+    {   
+        printf("%d.\t", i+1);
+        printf(get_printable_task(*(task_list+i)));
+    }
+
+    int num_tasks_completed;
+    Task **task_list_completed = read_all_tasks_from_file("done.txt", &num_tasks_completed);
+    if(task_list==NULL)
+    {
+        printf("\n\nNo tasks done.");
+        return;
+    }
+
+    printf("\n\nCompleted: %d\n", num_tasks_completed);
+    for(int i=0; i<num_tasks_completed; i++)
+    {   
+        printf("%d.\t", i+1);
+        printf(get_printable_complete_task(*(task_list_completed+i)));
+    }
+
     return;
 }
 

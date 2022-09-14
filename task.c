@@ -139,6 +139,13 @@ char* get_printable_task(Task *task)  {
     return task_str;
 }
 
+char* get_printable_complete_task(Task *task)  {
+    char *task_str = (char*)malloc(sizeof(char)*STD_STRING_SIZE);
+    sprintf(task_str, "[X] %s \t | %d\n", task->text, task->priority);
+    return task_str;
+}
+
+
 
 struct completed_task  {
     Task task;
@@ -240,6 +247,43 @@ void task_del(int task_index)
 
 void task_done(int task_index)
 {
+    int num_tasks;
+    Task **task_list = read_all_tasks_from_file("task.txt", &num_tasks);
+
+    if(task_list==NULL)
+    {
+        printf("\n\nNo tasks to do.");
+        return;
+    }
+    
+    qsort(task_list, num_tasks, sizeof(Task*), &compare_Task);
+
+    Task* completed_task = task_list[task_index-1];
+
+    printf("\n\nAfter complete:\n");
+    for(int i=0; i<num_tasks; i++)
+    {   
+        if(i != task_index-1)
+        {
+            printf("%d.\t", i+1);
+            printf(get_printable_task(*(task_list+i)));
+        }
+        else
+        {
+            printf("%d.\t", i+1);
+            printf(get_printable_complete_task(*(task_list+i)));
+        }
+    }
+
+    for (int i = task_index - 1; i < (num_tasks-1); i++)  
+    {  
+        task_list[i] = task_list[i+1]; // assign arr[i+1] to arr[i]
+        // printf("%s %s", (task_list[i])->text, (task_list[i])->text);
+    }
+
+    write_tasks_to_file(&completed_task, 1, "done.txt", 1); // to append not write
+    write_tasks_to_file(task_list, num_tasks-1, "task.txt", 0); // to append not write
+
     return;
 }
 
@@ -307,8 +351,8 @@ void task_menu(int argc, char* argv[])
     {
         if(argc == 3)
         {
-            int task_index = strtol(argv[argc-1], NULL, 10);
-            task_del(task_index); // return -1 if index not found and handle error
+            int task_index = strtol(argv[argc-1], NULL, 10); // return -1 if index not found and handle error
+            task_del(task_index); 
         }
         else
         {
@@ -316,12 +360,12 @@ void task_menu(int argc, char* argv[])
         }
     }
 
-    else if(strcmp(argv[1], "done ") == 0)
+    else if(strcmp(argv[1], "done") == 0)
     {
         if(argc == 3)
         {
-            int task_index = -1;
-            task_done(task_index); // return -1 if index not found and handle error
+            int task_index = strtol(argv[argc-1], NULL, 10); // return -1 if index not found and handle error
+            task_done(task_index); 
         }
         else
         {
@@ -329,7 +373,7 @@ void task_menu(int argc, char* argv[])
         }
     }
 
-    else if(strcmp(argv[1], "report ") == 0)
+    else if(strcmp(argv[1], "report") == 0)
     {
         if(argc == 2)
         {

@@ -8,7 +8,7 @@ Here's how it should work when you're done:
 
 1. The app can be run in the console with `./task`.
 
-2. The app should read from and write to a task.dat binary file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.
+2. The app should read from and write to a `task.txt` text file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.
 
 > Priority denotes how important a task is, if it is a high priority task, it should be completed earlier. Priority is denoted using an integer. The lower the number, the higher the priority.
    
@@ -18,7 +18,7 @@ Here is an example of a list of 2 tasks in the file.
    2 Complete the project
    ```
 
-3. A completed task is written to a completed.dat binary file. Each task should enapsulate all fields of the original task, and include an additional `date_of_completion` field that records _when_ the task is marked as done.
+3. A completed task is written to a `done.txt` text file. Each task should enapsulate all fields of the original task, and include an additional `date_of_completion` field that records _when_ the task is marked as done.
 
 4. Priority can be any integer _greater than_ or _equal to_ 0. 0 being the highest priority
 

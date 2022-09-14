@@ -5,7 +5,7 @@ The specification for this problem is written down as tests. Since we haven’t 
 ## Getting started
 
 
-### Getting the boilerplate code
+### Getting the Boilerplate Code
 
 - Login to your GitHub account.
 
@@ -13,6 +13,33 @@ The specification for this problem is written down as tests. Since we haven’t 
 
 - Follow the instructions here to `fork` the repository to your local desktop.
 
+
+### Getting the Code to your Local System
+
+On a command line terminal,
+
+- ```
+   git clone <YOUR-REPOSITORY-URL>
+   ```
+
+   The git clone command copies your repository from GitHub to your local computer. Note that this is a git specific command.
+
+- ```cd C-Programming-Course_Project-Starter```
+
+   Move into your repository's local copy.
+
+- Edit your code files here.
+
+- When you think you have made a good amount of progress, **add** your files, and **commit** your code. 
+   ```
+   git add .
+   git commit -m <SHORT-MSG-INDICATING-WHAT-PROGRESS-YOU'VE-MADE>
+   ```
+
+- When you are done for the day, **push** your code to GitHub.
+   ```
+   git push origin
+   ```
 
 ### Running the code
 
@@ -24,16 +51,17 @@ The specification for this problem is written down as tests. Since we haven’t 
 
 4. Once you are done with the changes you should be able to execute the task app by running the following command from the terminal.
 
+
    **On Windows:**
 
    ```
-   .\task.bat
+   .\task.exe
    ```
 
    **On \*nix:**
 
    ```
-   ./task.sh
+   ./task
    ```
 
 ## Your Goals

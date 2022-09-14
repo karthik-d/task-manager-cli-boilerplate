@@ -310,11 +310,7 @@ void task_report()
     }
 
     printf("\n\nCompleted: %d\n", num_tasks_completed);
-    for(int i=0; i<num_tasks_completed; i++)
-    {   
-        printf("%d.\t", i+1);
-        printf(get_printable_complete_task(*(task_list_completed+i)));
-    }
+    // display all tasks from the completed list -- iterate, and use get_printable_complete_task
 
     return;
 }

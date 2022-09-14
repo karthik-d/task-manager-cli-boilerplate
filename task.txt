@@ -1,7 +1,6 @@
-[ ] check 	 | 2
-[ ] hello 	 | 4
-[ ] new-hello 	 | 4
-[ ] new 	 | 1
-[ ] walk cat  	 | 5
-[ ] walk cat  	 | 0
-[ ] walk dog  	 | 0
+[ ] walk cat  	  	 | 0
+[ ] walk dog  	  	 | 0
+[ ] new 	  	 | 1
+[ ] check 	  	 | 2
+[ ] new-hello 	  	 | 4
+[ ] hello 	  	 | 4

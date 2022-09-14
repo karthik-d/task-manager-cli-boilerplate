@@ -202,6 +202,7 @@ void task_ls()
     printf("\n\nList of incomplete tasks:\n");
     for(int i=0; i<num_tasks; i++)
     {   
+        printf("%d.\t", i+1);
         printf(get_printable_task(*(task_list+i)));
     }
     return;
@@ -209,6 +210,31 @@ void task_ls()
 
 void task_del(int task_index)
 {
+    int num_tasks;
+    Task **task_list = read_all_tasks_from_file("task.txt", &num_tasks);
+    if(task_list==NULL)
+    {
+        printf("\n\nNo tasks to do.");
+        return;
+    }
+    
+    qsort(task_list, num_tasks, sizeof(Task*), &compare_Task);
+
+    for (int i = task_index - 1; i < (num_tasks-1); i++)  
+    {  
+        task_list[i] = task_list[i+1]; // assign arr[i+1] to arr[i]
+        // printf("%s %s", (task_list[i])->text, (task_list[i])->text);
+    } 
+
+    printf("\n\nAfter delete:\n");
+    for(int i=0; i<num_tasks-1; i++)
+    {   
+        printf("%d.\t", i+1);
+        printf(get_printable_task(*(task_list+i)));
+    }
+
+    write_tasks_to_file(task_list, num_tasks-1, "task.txt", 0); // to write not append
+
     return;
 }
 
@@ -281,7 +307,7 @@ void task_menu(int argc, char* argv[])
     {
         if(argc == 3)
         {
-            int task_index = -1;
+            int task_index = strtol(argv[argc-1], NULL, 10);
             task_del(task_index); // return -1 if index not found and handle error
         }
         else

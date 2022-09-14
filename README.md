@@ -18,15 +18,13 @@ Here is an example of a list of 2 tasks in the file.
    2 Complete the project
    ```
 
-3. A completed task is written to a `done.txt` text file. Each task should enapsulate all fields of the original task, and include an additional `date_of_completion` field that records _when_ the task is marked as done.
+3. A completed task is written to a `done.txt` text file. Each task should enapsulate all fields of the original task.
 
 4. Priority can be any integer _greater than_ or _equal to_ 0. 0 being the highest priority
 
 5. If two task have the same priority, the task that was added first should be displayed first.
 
-   The application must open the files task.dat and completed.dat from where the app is run, and not where the app is located. 
-
-6. The files should always be sorted in order of the priority, ie, the task with the highest priority should be first item in the file.
+   The application must open the files task.txt and done.txt from where the app is run, and not where the app is located. 
 
    ```
    $ cd /path/to/plans
@@ -35,8 +33,11 @@ Here is an example of a list of 2 tasks in the file.
    ```
 
    The application should look for the task files in `/path/to/plans`, since that is the user’s current directory.
+
+6. The files should always be sorted in order of the priority, i.e., the task with the highest priority should be first item in the file.
    
 > Please note that the programming task can and preferably, should be completed without the use of any additional packages.
+
 
 
 ## Usage
@@ -153,7 +154,7 @@ Completed : 3
 
 2. You are expected to write the code in `task.c` file.
 
-3. You should be able to build the app by running `make app`.
+3. You should be able to build the app by running `make task`.
 
 4. Once you are done with the changes you should be able to execute the task app by running the following command from the terminal.
 
@@ -168,6 +169,11 @@ Completed : 3
    ```
    ./task.sh
    ```
+
+
+
+, and include an additional `date_of_completion` field that records _when_ the task is marked as done.
+
 ## [Optional] Run Automated Tests
 
 >If you are able to set up npm by following the steps below, great! You can validate that your app works as expected.

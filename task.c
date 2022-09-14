@@ -282,7 +282,7 @@ void task_done(int task_index)
     }
 
     write_tasks_to_file(&completed_task, 1, "done.txt", 1); // to append not write
-    write_tasks_to_file(task_list, num_tasks-1, "task.txt", 0); // to append not write
+    write_tasks_to_file(task_list, num_tasks-1, "task.txt", 0); // to overwite
 
     return;
 }
@@ -306,7 +306,7 @@ void task_report()
         printf(get_printable_task(*(task_list+i)));
     }
 
-    int num_tasks_completed;
+    int num_tasks_completed = 0;
     Task **task_list_completed = read_all_tasks_from_file("done.txt", &num_tasks_completed);
     if(task_list==NULL)
     {
@@ -419,25 +419,14 @@ void task_menu(int argc, char* argv[])
 }
 
 int main(int argc, char* argv[])
-{
-    // Change to todo Manager Header
-    // printf("\n\nHello, World!");
-    // printf("\nToday is: %s\n\n\n", get_printable_date(get_current_local_date()));
-
-    // Task *test_task = initialize_task("Water the plants", 2);
-    // if(!write_tasks_to_file(&test_task, 1, "testfile.dat", 0)){
-    //     printf("Couldn't write tasks to file");
-    // };
-    
+{    
     printf("\n");
     printf("------------------------------------");
     printf("\n\tTODO CLI Application\n");
     printf("------------------------------------");
 
     // Menu
-
     task_menu(argc, argv);
-
     printf("\n\n");
     return 0;
 }

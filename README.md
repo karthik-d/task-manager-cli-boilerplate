@@ -170,7 +170,36 @@ Completed : 3
    ./task.sh
    ```
 
+## Your Goals
 
+### 1. Get the Boilerplate Running
+
+- Follow the instructions in the **Getting Started** section to get the boilerplate code, and get it running on your local systems.
+
+
+### 2. Understand the **Usage** and **Specifications** sections
+
+- The **usage** section details the end-user interface. Understand how the CLI tool will be used by a user who gets your software.
+
+- The **specification** section details how you should actually implement each functionality, what happens in the background. This is your logic.
+
+### 3. Familiarize yourself with the source code in `task.c`
+
+- Take a look at all the helper functions, interfaces, and structures in the source file. *Simply try to understand what each function does: its input and output.* 
+
+> Start from the `main()` function, and trace your way through the function calls.
+
+### 4. Start Implementing one Use-Case at a time
+
+- Start with the first use-case in the **usage** section.
+
+- Find the relevant portion of the code (start looking from `main()`!) and write your code to make appropriate function calls and/or operations to implement it.
+
+- **Compile and Run** frequently, to ensure you are headed in the right direction.
+
+- Got one case running? Great! - Let us know.
+
+(Repeat for the rest of the use cases)
 
 , and include an additional `date_of_completion` field that records _when_ the task is marked as done.
 

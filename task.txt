@@ -1,3 +1,4 @@
 [ ] run  	  	  	  	 | 4
 [ ] jog  	 | 2
 [ ] walk  	 | 5
+[ ] walk my dog  	 | 3

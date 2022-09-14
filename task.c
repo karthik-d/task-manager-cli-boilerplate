@@ -177,6 +177,7 @@ void task_add(int task_priority, char* task_text)
     // handle errors if it couldn't be written
 
     printf("\n\nAdded task:\n");
+    write_tasks_to_file(&new_task, 1, "task.txt", 1);
     // display the task using - get_printable_task()
 
     return;
@@ -192,10 +193,10 @@ int compare_Task(const void *a, const void *b)
 
 void task_ls()
 {
-    int num_tasks;
+    int num_tasks = 0;
 
     // Use read_all_tasks_from_file() to read the list of tasks from the file
-
+    // char **string
     Task **task_list = read_all_tasks_from_file("task.txt", &num_tasks);
     if(task_list==NULL)
     {
@@ -211,7 +212,9 @@ void task_ls()
     for(int i=0; i<num_tasks; i++)
     {   
         printf("%d.\t", i+1);
-        // place the print statement year
+        // place the print statement here
+        // task_list[i]
+        printf("%s", get_printable_task(task_list[i]));
     }
     return;
 }

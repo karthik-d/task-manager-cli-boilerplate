@@ -8,6 +8,8 @@ This guided project is part of the **Short-term Hands-on Supplemtary Course in C
 
 [Link to the Course Page](https://github.com/nive927/Short-term-Hands-on-Supplementary-Course-on-C-Programming).
 
+[Link to the Project Page](https://github.com/karthik-d/C-Programming-Course_Project-Starter).
+
 ## Getting started
 
 

@@ -9,6 +9,44 @@ The capstone project guides you through the implementation of a command-line tod
 The subsequent sections detail the end-user perspective (**Usage**) and the programmer perspective (**Specification**) of the project. 
 Following this, the instructions to obtain the starter code locally, run them, and build atop the existing boilerplate to complete the project are described as independent goals.
 
+## Todo CLI Specification: Programmer Perspective
+
+1. The app can be run in the console with `./task`.
+
+2. The app should read from and write to a `task.txt` text file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.
+
+> Priority denotes how important a task is. If it is a high priority task, it should be completed earlier. Priority is denoted using an integer. The lower the number, the higher the priority.
+   
+Here is an example of a list of 2 tasks in the file.
+   ```
+   1 Prepare for CAT tests
+   2 Complete Mini-Project
+   ```
+
+3. Completed tasks are to be written to a `done.txt` text file. Each task line in this file should enapsulate all fields of the original task.
+
+4. Priority can be any integer _greater than_ or _equal to_ 0. 0 denotes the highest priority.
+
+5. If two tasks have the same priority, the task that was added first should be displayed first.
+
+   The application must open the files `task.txt` and `done.txt` from where the app is run, and not where the app is located. 
+
+   For instance, 
+   
+   In,
+   ```
+   $ cd /path/to/plans
+
+   $ /path/to/apps/task ls
+   ```
+
+   The application should look for the task files in `/path/to/plans`, since that is the user’s current directory.
+
+
+6. The files should always be sorted in order of the priority, i.e., the task with the highest priority should be first item in the file.
+   
+> Please note that the programming task can and preferably, should be completed without the use of any additional packages.
+
 ## Todo CLI Usage: User Perspective 
 
 ### 1. Help
@@ -40,8 +78,8 @@ Example:
 
 ```
 $ ./task ls
-1. change light bulb [2]
-2. water the plants [5]
+1. Prepare for Practical Exams [2]
+2. Complete Mini-Project [5]
 ```
 
 index starts from 1, this is used to identify a particular task to complete or delete it.
@@ -51,8 +89,8 @@ index starts from 1, this is used to identify a particular task to complete or d
 Use the add command. The text of the task should be enclosed within double quotes (otherwise only the first word is considered as the item text, and the remaining words are treated as different arguments).
 
 ```
-$ ./task add 5 "the thing i need to do"
-Added task: "the thing i need to do" with priority 5
+$ ./task add 5 "Buy textbook"
+Added task: "Buy textbook" with priority 5
 ```
 
 > Tasks may have the same task text, leading to potential duplicates. De-duplication is not a focus of this implementation.
@@ -106,45 +144,6 @@ Completed : 3
 3. yet another completed task
 ```
 
-## Todo CLI Specification: Programmer Perspective
-
-1. The app can be run in the console with `./task`.
-
-2. The app should read from and write to a `task.txt` text file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.
-
-> Priority denotes how important a task is. If it is a high priority task, it should be completed earlier. Priority is denoted using an integer. The lower the number, the higher the priority.
-   
-Here is an example of a list of 2 tasks in the file.
-   ```
-   1 Buy milk
-   2 Complete the project
-   ```
-
-3. Completed tasks are to be written to a `done.txt` text file. Each task line in this file should enapsulate all fields of the original task.
-
-4. Priority can be any integer _greater than_ or _equal to_ 0. 0 denotes the highest priority.
-
-5. If two tasks have the same priority, the task that was added first should be displayed first.
-
-   The application must open the files `task.txt` and `done.txt` from where the app is run, and not where the app is located. 
-
-   For instance, 
-   
-   In,
-   ```
-   $ cd /path/to/plans
-
-   $ /path/to/apps/task ls
-   ```
-
-   The application should look for the task files in `/path/to/plans`, since that is the user’s current directory.
-
-
-6. The files should always be sorted in order of the priority, i.e., the task with the highest priority should be first item in the file.
-   
-> Please note that the programming task can and preferably, should be completed without the use of any additional packages.
-
- 
 
 ## Getting Started with the Implementation
 

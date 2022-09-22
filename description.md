@@ -53,7 +53,8 @@ $ ./task add 5 "the thing i need to do"
 Added task: "the thing i need to do" with priority 5
 ```
 
-> Tasks don't need 1
+> Tasks may have the same task text, leading to potential duplicates. De-duplication is not a focus of this implementation.
+
 
 ### 4. Delete an item
 
@@ -103,13 +104,13 @@ Completed : 3
 3. yet another completed task
 ```
 
-## Todo CLI Specification
+## Todo CLI Specification: Programmer Perspective
 
 1. The app can be run in the console with `./task`.
 
 2. The app should read from and write to a `task.txt` text file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.
 
-> Priority denotes how important a task is, if it is a high priority task, it should be completed earlier. Priority is denoted using an integer. The lower the number, the higher the priority.
+> Priority denotes how important a task is. If it is a high priority task, it should be completed earlier. Priority is denoted using an integer. The lower the number, the higher the priority.
    
 Here is an example of a list of 2 tasks in the file.
    ```
@@ -117,14 +118,17 @@ Here is an example of a list of 2 tasks in the file.
    2 Complete the project
    ```
 
-3. A completed task is written to a `done.txt` text file. Each task should enapsulate all fields of the original task.
+3. Completed tasks are to be written to a `done.txt` text file. Each task line in this file should enapsulate all fields of the original task.
 
-4. Priority can be any integer _greater than_ or _equal to_ 0. 0 being the highest priority
+4. Priority can be any integer _greater than_ or _equal to_ 0. 0 denotes the highest priority.
 
-5. If two task have the same priority, the task that was added first should be displayed first.
+5. If two tasks have the same priority, the task that was added first should be displayed first.
 
-   The application must open the files task.txt and done.txt from where the app is run, and not where the app is located. 
+   The application must open the files `task.txt` and `done.txt` from where the app is run, and not where the app is located. 
 
+   For instance, 
+   
+   In,
    ```
    $ cd /path/to/plans
 
@@ -133,13 +137,14 @@ Here is an example of a list of 2 tasks in the file.
 
    The application should look for the task files in `/path/to/plans`, since that is the user’s current directory.
 
+
 6. The files should always be sorted in order of the priority, i.e., the task with the highest priority should be first item in the file.
    
 > Please note that the programming task can and preferably, should be completed without the use of any additional packages.
 
  
 
-## Getting started
+## Getting Started with the Implementation
 
 
 ### Getting the Boilerplate Code
@@ -201,7 +206,7 @@ On a command line terminal,
    ./task
    ```
 
-## Your Goals
+## Your Goals  to Complete the Project
 
 ### 1. Get the Boilerplate Running
 

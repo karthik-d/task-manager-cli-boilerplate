@@ -2,9 +2,24 @@ Through this guided project, we want to see how you implement a command-line (CL
 
 The specification for this problem is written down as tests. Since we haven’t actually implemented anything, the tests are currently failing. You have to solve the problem by implementing the application and getting all the tests to pass.
 
-# Todo CLI - Project Description
+# Capstone Project - Todo CLI - Description
 
-The capstone project guides you through the implementation of a command-line todo application. The application allows users to jot down their tasks with an associated priority, list them, delete them, mark them as done, and generate completion reports. 
+The capstone project guides you through the implementation of a command-line todo application. The application allows users to jot down their tasks with an associated priority, list them, delete them, mark them as done, and generate completion reports.  Pending tasks should be stored in a file called `task.txt` text file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.  Completed tasks are to be written to a `done.txt` text file.
+
+The code for this capstone project has been partially implemented with the necessary APIs to facilitate its completion. The following commands are to be implemented:
+
+- The command `./task ls`  lists all the tasks from `tasks.txt`, which are assumed to be pending.
+
+- The command `./task report` lists all tasks from `tasks.txt` and `done.txt` files, which indicates both the pending as well as the completed tasks.
+
+- The command `./task add 2 Complete Python assignment`  adds a new task into `tasks.txt`, along with its associated priority as **Complete Python assignment [2]**
+
+- The command ` ./task del INDEX` deletes the task at line 3 from the `task.txt` file.
+
+- The command ` ./task done INDEX` marks the task at line 3 in the `task.txt` file as done, by moving the task line to the `done.txt` file.
+
+The partial implementation will provide function APIs to perform specific operations. For instance, to complete the `./task ls` command’s implementation, the relevant `task_add()` function is defined with an empty function definition. The logic for this function body should be implemented. Furthermore, function APIs are also available to perform elementary operations such as reading and writing lines from text files. These APIs must be used to complete the implementation. 
+
 
 The subsequent sections detail the end-user perspective (**Usage**) and the programmer perspective (**Specification**) of the project. 
 Following this, the instructions to obtain the starter code locally, run them, and build atop the existing boilerplate to complete the project are described as independent goals.
@@ -19,8 +34,8 @@ Following this, the instructions to obtain the starter code locally, run them, a
    
 Here is an example of a list of 2 tasks in the file.
    ```
-   1 Prepare for CAT tests
-   2 Complete Mini-Project
+   1 Prepare for CAT tests [2]
+   2 Complete Mini-Project [5]
    ```
 
 3. Completed tasks are to be written to a `done.txt` text file. Each task line in this file should enapsulate all fields of the original task.

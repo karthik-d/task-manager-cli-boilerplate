@@ -2,13 +2,142 @@ Through this guided project, we want to see how you implement a command-line (CL
 
 The specification for this problem is written down as tests. Since we haven’t actually implemented anything, the tests are currently failing. You have to solve the problem by implementing the application and getting all the tests to pass.
 
-## Course Material
+# Todo CLI - Project Description
 
-This guided project is part of the **Short-term Hands-on Supplemtary Course in C Programming**, conducted by the [Computer Science & Engineering Department](https://www.ssn.edu.in/college-of-engineering/computer-science-and-engineering-department-ssn-institutions/) at [Sri Sivasubramaniya Nadar College of Engineering](https://www.ssn.edu.in/) through a practicum-driven lesson plan during May-July 2022.
+The capstone project implements a command-line todo application. It allows users to jot down their tasks with an associated priority, list them, delete them, mark them as done, and generate reports. 
+The subsequent sections detail the end-user perspective (**Usage**) and the programmer perspective (**Specification**) of the project. 
 
-[Link to the Course Page](https://github.com/nive927/Short-term-Hands-on-Supplementary-Course-on-C-Programming).
+## Todo CLI Usage: User Perspective 
 
-[Link to the Project Page](https://github.com/karthik-d/C-Programming-Course_Project-Starter).
+### 1. Help
+
+Executing the command without any arguments, or with a single argument help prints the CLI usage.
+
+```
+$ ./task help
+Usage :-
+$ ./task add 2 hello world    # Add a new item with priority 2 and text "hello world" to the list
+$ ./task ls                   # Show incomplete priority list items sorted by priority in ascending order
+$ ./task del INDEX            # Delete the incomplete item with the given index
+$ ./task done INDEX           # Mark the incomplete item with the given index as complete
+$ ./task help                 # Show usage
+$ ./task report               # Statistics
+```
+
+### 2. List all pending items
+
+Use the ls command to see all the items that are not yet complete, in ascending order of priority.
+
+Every item should be printed on a new line. with the following format
+
+```
+[index] [task] [priority]
+```
+
+Example:
+
+```
+$ ./task ls
+1. change light bulb [2]
+2. water the plants [5]
+```
+
+index starts from 1, this is used to identify a particular task to complete or delete it.
+
+### 3. Add a new item
+
+Use the add command. The text of the task should be enclosed within double quotes (otherwise only the first word is considered as the item text, and the remaining words are treated as different arguments).
+
+```
+$ ./task add 5 "the thing i need to do"
+Added task: "the thing i need to do" with priority 5
+```
+
+> Tasks don't need 1
+
+### 4. Delete an item
+
+Use the del command to remove an item by its index.
+
+```
+$ ./task del 3
+Deleted item with index 3
+```
+
+Attempting to delete a non-existent item should display an error message.
+
+```
+$ ./task del 5
+Error: item with index 5 does not exist. Nothing deleted.
+```
+
+### 5. Mark a task as completed
+
+Use the done command to mark an item as completed by its index.
+
+```
+$ ./task done 1
+Marked item as done.
+```
+
+Attempting to mark a non-existed item as completed will display an error message.
+
+```
+$ ./task done 5
+Error: no incomplete item with index 5 exists.
+```
+
+### 6. Generate a report
+
+Show the number of complete and incomplete items in the list. and the complete and incomplete items grouped together.
+
+```
+$ ./task report
+Pending : 2
+1. this is a pending task [1]
+2. this is a pending task with priority [4]
+
+Completed : 3
+1. completed task
+2. another completed task
+3. yet another completed task
+```
+
+## Todo CLI Specification
+
+1. The app can be run in the console with `./task`.
+
+2. The app should read from and write to a `task.txt` text file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.
+
+> Priority denotes how important a task is, if it is a high priority task, it should be completed earlier. Priority is denoted using an integer. The lower the number, the higher the priority.
+   
+Here is an example of a list of 2 tasks in the file.
+   ```
+   1 Buy milk
+   2 Complete the project
+   ```
+
+3. A completed task is written to a `done.txt` text file. Each task should enapsulate all fields of the original task.
+
+4. Priority can be any integer _greater than_ or _equal to_ 0. 0 being the highest priority
+
+5. If two task have the same priority, the task that was added first should be displayed first.
+
+   The application must open the files task.txt and done.txt from where the app is run, and not where the app is located. 
+
+   ```
+   $ cd /path/to/plans
+
+   $ /path/to/apps/task ls
+   ```
+
+   The application should look for the task files in `/path/to/plans`, since that is the user’s current directory.
+
+6. The files should always be sorted in order of the priority, i.e., the task with the highest priority should be first item in the file.
+   
+> Please note that the programming task can and preferably, should be completed without the use of any additional packages.
+
+ 
 
 ## Getting started
 
@@ -114,136 +243,6 @@ On a command line terminal,
 - Follow the instructions in the **Run Automated Tests** section to run automated tests, that wil evaluate multiple edge-cases of your application.
 
 - Again, **implement-execute-test** and repeat for each use case.
-
-
-## Todo CLI Usage
-
-### 1. Help
-
-Executing the command without any arguments, or with a single argument help prints the CLI usage.
-
-```
-$ ./task help
-Usage :-
-$ ./task add 2 hello world    # Add a new item with priority 2 and text "hello world" to the list
-$ ./task ls                   # Show incomplete priority list items sorted by priority in ascending order
-$ ./task del INDEX            # Delete the incomplete item with the given index
-$ ./task done INDEX           # Mark the incomplete item with the given index as complete
-$ ./task help                 # Show usage
-$ ./task report               # Statistics
-```
-
-### 2. List all pending items
-
-Use the ls command to see all the items that are not yet complete, in ascending order of priority.
-
-Every item should be printed on a new line. with the following format
-
-```
-[index] [task] [priority]
-```
-
-Example:
-
-```
-$ ./task ls
-1. change light bulb [2]
-2. water the plants [5]
-```
-
-index starts from 1, this is used to identify a particular task to complete or delete it.
-
-### 3. Add a new item
-
-Use the add command. The text of the task should be enclosed within double quotes (otherwise only the first word is considered as the item text, and the remaining words are treated as different arguments).
-
-```
-$ ./task add 5 "the thing i need to do"
-Added task: "the thing i need to do" with priority 5
-```
-
-### 4. Delete an item
-
-Use the del command to remove an item by its index.
-
-```
-$ ./task del 3
-Deleted item with index 3
-```
-
-Attempting to delete a non-existent item should display an error message.
-
-```
-$ ./task del 5
-Error: item with index 5 does not exist. Nothing deleted.
-```
-
-### 5. Mark a task as completed
-
-Use the done command to mark an item as completed by its index.
-
-```
-$ ./task done 1
-Marked item as done.
-```
-
-Attempting to mark a non-existed item as completed will display an error message.
-
-```
-$ ./task done 5
-Error: no incomplete item with index 5 exists.
-```
-
-### 6. Generate a report
-
-Show the number of complete and incomplete items in the list. and the complete and incomplete items grouped together.
-
-```
-$ ./task report
-Pending : 2
-1. this is a pending task [1]
-2. this is a pending task with priority [4]
-
-Completed : 3
-1. completed task
-2. another completed task
-3. yet another completed task
-```
-
-## Todo CLI Specification
-
-1. The app can be run in the console with `./task`.
-
-2. The app should read from and write to a `task.txt` text file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.
-
-> Priority denotes how important a task is, if it is a high priority task, it should be completed earlier. Priority is denoted using an integer. The lower the number, the higher the priority.
-   
-Here is an example of a list of 2 tasks in the file.
-   ```
-   1 Buy milk
-   2 Complete the project
-   ```
-
-3. A completed task is written to a `done.txt` text file. Each task should enapsulate all fields of the original task.
-
-4. Priority can be any integer _greater than_ or _equal to_ 0. 0 being the highest priority
-
-5. If two task have the same priority, the task that was added first should be displayed first.
-
-   The application must open the files task.txt and done.txt from where the app is run, and not where the app is located. 
-
-   ```
-   $ cd /path/to/plans
-
-   $ /path/to/apps/task ls
-   ```
-
-   The application should look for the task files in `/path/to/plans`, since that is the user’s current directory.
-
-6. The files should always be sorted in order of the priority, i.e., the task with the highest priority should be first item in the file.
-   
-> Please note that the programming task can and preferably, should be completed without the use of any additional packages.
-
 
 
 ## [Optional] Run Automated Tests

@@ -4,8 +4,10 @@ The specification for this problem is written down as tests. Since we haven’t 
 
 # Todo CLI - Project Description
 
-The capstone project implements a command-line todo application. It allows users to jot down their tasks with an associated priority, list them, delete them, mark them as done, and generate reports. 
+The capstone project guides you through the implementation of a command-line todo application. The application allows users to jot down their tasks with an associated priority, list them, delete them, mark them as done, and generate completion reports. 
+
 The subsequent sections detail the end-user perspective (**Usage**) and the programmer perspective (**Specification**) of the project. 
+Following this, the instructions to obtain the starter code locally, run them, and build atop the existing boilerplate to complete the project are described as independent goals.
 
 ## Todo CLI Usage: User Perspective 
 

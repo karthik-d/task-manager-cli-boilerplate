@@ -21,7 +21,7 @@ This guided project is part of the **Short-term Hands-on Supplemtary Course in C
 
 - Access the repository from the [project starter page](https://github.com/karthik-d/C-Programming-Course_Project-Starter).
 
-- Follow the instructions here to `fork` the repository to your local desktop.
+- Follow the [instructions here](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to `fork` the repository to your local desktop.
 
 
 ### Getting the Code to your Local System

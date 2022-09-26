@@ -2,7 +2,7 @@ Through this guided project, we want to see how you implement a command-line (CL
 
 The specification for this problem is written down as tests. Since we haven’t actually implemented anything, the tests are currently failing. You have to solve the problem by implementing the application and getting all the tests to pass.
 
-# Capstone Project - Todo CLI - Description
+# Guided Capstone Project - Task Manager CLI - Description
 
 The capstone project guides you through the implementation of a command-line todo application. The application allows users to jot down their tasks with an associated priority, list them, delete them, mark them as done, and generate completion reports.  Pending tasks should be stored in a file called `task.txt` text file. Each task occupies a single line in this file. Each task should have an associated priority, an integer.  Completed tasks are to be written to a `done.txt` text file.
 

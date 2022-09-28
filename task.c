@@ -177,7 +177,6 @@ void task_add(int task_priority, char* task_text)
     // handle errors if it couldn't be written
 
     printf("\n\nAdded task:\n");
-    write_tasks_to_file(&new_task, 1, "task.txt", 1);
     // display the task using - get_printable_task()
 
     return;
@@ -213,8 +212,6 @@ void task_ls()
     {   
         printf("%d.\t", i+1);
         // place the print statement here
-        // task_list[i]
-        printf("%s", get_printable_task(task_list[i]));
     }
     return;
 }

@@ -2,7 +2,7 @@
 
 Through this guided project, we want to see how you implement a command-line (CLI) program that lets you manage your tasks.
 
-A complete project description can be found in [description.md](./description.md). The specification for this problem is written down as tests. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application and getting all the tests to pass. 
+A complete project description can be found in [description.md](./description.md). The specification for this problem is laid out below, and automated test-cases have been written down to test the application at each developmental stage. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application and getting all the tests to pass. 
 
 The code for this capstone project has been partially implemented with the necessary APIs to facilitate its completion. The partial implementation will provide function APIs to perform specific operations. For instance, to complete the `./task add` command’s implementation, the relevant `task_add()` function is defined with an empty function definition. The logic for this function body should be implemented. Furthermore, function APIs are also available to perform elementary operations such as reading and writing lines from text files. These APIs must be used to complete the implementation. 
 

@@ -8,7 +8,7 @@ The code for this capstone project has been partially implemented with the neces
 
 ## Course Material
 
-This guided project is part of the **Short-term Hands-on Supplemtary Course in C Programming**, conducted by the [Computer Science & Engineering Department](https://www.ssn.edu.in/college-of-engineering/computer-science-and-engineering-department-ssn-institutions/) at [Sri Sivasubramaniya Nadar College of Engineering](https://www.ssn.edu.in/) through a practicum-driven lesson plan during May-July 2022.
+This guided project is part of the **Short-term Hands-on Supplementary Course in C Programming**, conducted by the [Computer Science & Engineering Department](https://www.ssn.edu.in/college-of-engineering/computer-science-and-engineering-department-ssn-institutions/) at [Sri Sivasubramaniya Nadar College of Engineering](https://www.ssn.edu.in/) through a practicum-driven lesson plan during May-July 2022.
 
 [Link to the Course Page](https://github.com/nive927/Short-term-Hands-on-Supplementary-Course-on-C-Programming).
 

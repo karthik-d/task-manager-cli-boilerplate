@@ -2,17 +2,9 @@
 
 Through this guided project, we want to see how you implement a command-line (CLI) program that lets you manage your tasks.
 
-A complete project description can be found in [description.md](./description.md). The specification for this problem is laid out below, and automated test-cases have been written down to test the application at each developmental stage. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application and getting all the tests to pass. 
+> A complete project description can be found in [description.md](./description.md). The specification for this problem is laid out below, and automated test-cases have been written down to test the application at each developmental stage. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application and getting all the tests to pass. 
 
 The code for this capstone project has been partially implemented with the necessary APIs to facilitate its completion. The partial implementation will provide function APIs to perform specific operations. For instance, to complete the `./task add` command’s implementation, the relevant `task_add()` function is defined with an empty function definition. The logic for this function body should be implemented. Furthermore, function APIs are also available to perform elementary operations such as reading and writing lines from text files. These APIs must be used to complete the implementation. 
-
-## Team
-
-| Nivedhitha D | Karthik Desingu | Dr. B. Prabavathy | Dr. T. T. Mirnalinee |
-| :----------: | :-------: | :---------------: | :-----------------: |
-|![display-error](./assets/ND-profile-pic.PNG)|![display-error](./assets/KD-profile-pic.PNG)|![display-error](./assets/PB-profile-pic.PNG)|![display-error](./assets/TTM-profile-pic.PNG)|
-|<a href="https://www.linkedin.com/in/nivedhitha-d-0bb67b1b0/"><img src="https://img.shields.io/badge/-Nivedhitha%20D-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a> <a href="https://github.com/nive927"><img src="https://img.shields.io/badge/-nive927-B10036?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://www.linkedin.com/in/karthik-desingu/"><img src="https://img.shields.io/badge/-Karthik%20D-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a> <a href="https://github.com/karthik-d"><img src="https://img.shields.io/badge/-karthik--d-B10036?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://www.ssn.edu.in/staff-members/dr-b-prabavathy/"><img src="https://img.shields.io/badge/-Dr%20B%20Prabavathy-323EA8?style=flat&logo=#&logoColor=white"/></a>|<a href="https://www.ssn.edu.in/staff-members/dr-t-t-mirnalinee//"><img src="https://img.shields.io/badge/-Dr%20T%20T%20Mirnalinee-323EA8?style=flat&logo=#&logoColor=white"/></a>|
-|B.E. CSE 2018-2022|B.E. CSE 2019-2023|Associate Professor|Professor & Head of the Department|
 
 ## Course Material
 
@@ -21,6 +13,14 @@ This guided project is part of the **Short-term Hands-on Supplementary Course in
 [Link to the Course Page](https://github.com/nive927/Short-term-Hands-on-Supplementary-Course-on-C-Programming).
 
 [Link to the Project Page](https://github.com/karthik-d/C-Programming-Course_Project-Starter).
+
+## Team
+
+| Nivedhitha D | Karthik Desingu | Dr. B. Prabavathy | Dr. T. T. Mirnalinee |
+| :----------: | :-------: | :---------------: | :-----------------: |
+|![display-error](./assets/ND-profile-pic.PNG)|![display-error](./assets/KD-profile-pic.PNG)|![display-error](./assets/PB-profile-pic.PNG)|![display-error](./assets/TTM-profile-pic.PNG)|
+|<a href="https://www.linkedin.com/in/nivedhitha-d-0bb67b1b0/"><img src="https://img.shields.io/badge/-Nivedhitha%20D-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a> <a href="https://github.com/nive927"><img src="https://img.shields.io/badge/-nive927-B10036?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://www.linkedin.com/in/karthik-desingu/"><img src="https://img.shields.io/badge/-Karthik%20D-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a> <a href="https://github.com/karthik-d"><img src="https://img.shields.io/badge/-karthik--d-B10036?style=flat&logo=GitHub&logoColor=white"/></a>|<a href="https://www.ssn.edu.in/staff-members/dr-b-prabavathy/"><img src="https://img.shields.io/badge/-Dr%20B%20Prabavathy-323EA8?style=flat&logo=#&logoColor=white"/></a>|<a href="https://www.ssn.edu.in/staff-members/dr-t-t-mirnalinee//"><img src="https://img.shields.io/badge/-Dr%20T%20T%20Mirnalinee-323EA8?style=flat&logo=#&logoColor=white"/></a>|
+|B.E. CSE 2018-2022|B.E. CSE 2019-2023|Associate Professor|Professor & Head of the Department|
 
 ## Getting started
 

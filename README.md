@@ -318,4 +318,4 @@ A few notes to help you avoid any hiccups while implementing the programming cha
 
 2. In Windows machines, the `make` command might not exist and can prevent you from running the tests. This can be fixed [by using WSL, or installing MinGW, among other options](https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows).
 
-3. For any conceptual clarifications, look refer to the [course material](https://github.com/nive927/Short-term-Hands-on-Supplementary-Course-on-C-Programming#course-schedule), the [C/C++ documentation](https://en.cppreference.com/w/c/header), or just _Google_ them out!
+3. For any conceptual clarifications, refer to the [course material](https://github.com/nive927/Short-term-Hands-on-Supplementary-Course-on-C-Programming#course-schedule), the [C/C++ documentation](https://en.cppreference.com/w/c/header), or just _Google_ them out!

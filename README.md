@@ -27,8 +27,6 @@ This guided project is part of the **Short-term Hands-on Supplementary Course in
 
 ### Getting the Boilerplate Code
 
-- Login to your GitHub account.
-
 - Access the repository from the [project starter page](https://github.com/karthik-d/C-Programming-Course_Project-Starter).
 
 - Follow the [instructions here](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to [`fork`](https://github.com/karthik-d/C-Programming-Course_Project-Starter/fork) the repository to your local desktop.

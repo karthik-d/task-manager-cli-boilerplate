@@ -27,9 +27,9 @@ This guided project is part of the **Short-term Hands-on Supplementary Course in
 
 ### Getting the Boilerplate Code
 
-- Access the repository from the [project starter page](https://github.com/karthik-d/C-Programming-Course_Project-Starter).
+- Access the repository from the [project starter page](https://github.com/karthik-d/task-manager-cli-boilerplate).
 
-- Follow the [instructions here](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to [`fork`](https://github.com/karthik-d/C-Programming-Course_Project-Starter/fork) the repository to your local desktop.
+- Follow the [instructions here](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to [`fork`](https://github.com/karthik-d/task-manager-cli-boilerplate/fork) the repository to your local desktop.
 
 
 ### Getting the Code to your Local System

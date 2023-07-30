@@ -1,6 +1,6 @@
 # C Programming Course - Guided Project: Task Manager CLI Application
 
-This guided poject tests participants' abilty to implement a command-line (CLI) program that lets its users manage their tasks.
+This is a guided poject, designed for a C programming course, that tests participants' abilty to implement a command-line (CLI) program that lets its users manage their tasks.
 
 > A complete project description can be found in [description.md](./description.md). The specification for this problem is laid out below, and automated test-cases have been written down to test the application at each developmental stage. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application and getting to get all the tests to pass. 
 

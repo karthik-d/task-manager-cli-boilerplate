@@ -27,14 +27,14 @@ This guided project is part of the **Short-term Hands-on Supplementary Course in
 ## Getting started
 
 
-### Getting the Boilerplate Code
+### 1. Getting the Boilerplate Code to your GitHub account
 
 - Access the repository from the [project starter page](https://github.com/karthik-d/task-manager-cli-boilerplate).
 
 - Follow the [instructions here](https://docs.github.com/en/get-started/quickstart/fork-a-repo) to [`fork`](https://github.com/karthik-d/task-manager-cli-boilerplate/fork) the repository to your local desktop.
 
 
-### Getting the Code to your Local System
+### 2. Getting the Boilerplate Code to your Local System
 
 On a command line terminal,
 
@@ -61,15 +61,15 @@ On a command line terminal,
    git push origin
    ```
 
-### Running the code
+### 3. Running the code
 
 1. You should have a C compiler available for building the code.
 
-2. You are expected to write the code in `task.c` file.
+2. You are expected to code in the`task.c` file.
 
 3. You should be able to build the app by running `make task`.
 
-4. Once you are done with the changes you should be able to execute the task app by running the following command from the terminal.
+4. Once you are done with the changes, you should be able to execute the task app by running the following command from the terminal.
 
 
    **On Windows:**
@@ -86,7 +86,7 @@ On a command line terminal,
 
 ## Your Goals
 
-### 1. Get the Boilerplate Running
+### 1. Get the boilerplate running
 
 - Follow the instructions in the **Getting Started** section to get the boilerplate code, and get it running on your local systems.
 
@@ -103,7 +103,7 @@ On a command line terminal,
 
 > Start from the `main()` function, and trace your way through the function calls.
 
-### 4. Start Implementing one Use-Case at a time
+### 4. Start implementing one use-case at a time
 
 - Start with the first use-case in the **usage** section.
 
@@ -120,6 +120,7 @@ On a command line terminal,
 - Include an additional `date_of_completion` field that records _when_ the task is marked as done.
 
 > The functions to get the current date and time, in the required character-array format, are already provided as helpers!
+> Note, however, that you'll need to modify the task structure to make this happen.
 
 ### **[Bonus]** 6. Run the Automated Tests
 
@@ -308,7 +309,7 @@ In the previous sections, you might witness many commands prefixed with `./`, or
 
 If you're using the Windows _Command Prompt_, then you'll need to replace `/` with `\` (back-slash) for these commands and paths to work as expected.
 
-On Windows _Powershell_, these substitutions are not required.
+On Windows _Powershell_, these substitutions are **not** required.
 
 ## Expected Issues
 

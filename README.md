@@ -2,11 +2,11 @@
 
 This is a guided poject, designed for a C programming course, that tests participants' abilty to implement a command-line (CLI) program that lets its users manage their tasks.
 
-> A complete project description can be found in [description.md](./description.md). The specification for this problem is laid out below, and automated test-cases have been written down to test the application at each developmental stage. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application and getting to get all the tests to pass. 
+> A complete project description can be found in [description.md](./description.md). The specification for this problem is laid out below, and automated test-cases have been written down to test the application at each developmental stage. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application to get all the tests to pass. 
 
-The code for this capstone project has been partially implemented; the boilerplates for atomic operations on tasks, such as add, delete, mark as done, are provided and must need to be completed, and all the fundamental operations on files and structures you will need have been composed as function APIs for you to understand and use while concretizing the boilerplates. 
+The code for this capstone project has been partially implemented; the boilerplates for atomic operations on tasks, such as add, delete, mark as done, are provided and need to be completed, and all the fundamental operations on files and structures you will need have been composed as function APIs for you to understand and use while concretizing the boilerplates. 
 
-The function APIs allow you to perform specific operations that will constitute your atomic operations; for instance, to complete the `./task add` command (an atomic operation), the relevant `task_add()` function is defined as a (functionally) incomplete template. The logic for this function body should be implemented. The function APIs, in this case, will help you perform elementary operations such as reading and writing lines from text files. 
+The function APIs allow you to perform specific operations that will constitute your atomic operations; for instance, to complete the `./task add` command (an atomic operation), the relevant `task_add()` function is defined as a (functionally) incomplete template. The logic for this function - read task, wrap task into structure, and write to file - should be implemented. In this case, you might find the function APIs useful to perform elementary operations such as writing lines to text files, composing a structure using the task specification, displaying a task, etc. 
 
 ## Course Material
 

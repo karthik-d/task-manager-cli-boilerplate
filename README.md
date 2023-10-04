@@ -4,7 +4,9 @@ This is a guided poject, designed for a C programming course, that tests partici
 
 > A complete project description can be found in [description.md](./description.md). The specification for this problem is laid out below, and automated test-cases have been written down to test the application at each developmental stage. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application and getting to get all the tests to pass. 
 
-The code for this capstone project has been partially implemented with the necessary APIs to facilitate its completion. The partial implementation will provide functional APIs to perform specific operations. For instance, to complete the `./task add` command’s implementation, the relevant `task_add()` function is defined with an empty function definition. The logic for this function body should be implemented. Furthermore, function APIs are also available to perform elementary operations such as reading and writing lines from text files. These APIs must be used to complete the implementation. 
+The code for this capstone project has been partially implemented; the boilerplates for atomic operations on tasks, such as add, delete, mark as done, are provided and must need to be completed, and all the fundamental operations on files and structures you will need have been composed as function APIs for you to understand and use while concretizing the boilerplates. 
+
+The function APIs allow you to perform specific operations that will constitute your atomic operations; for instance, to complete the `./task add` command (an atomic operation), the relevant `task_add()` function is defined as a (functionally) incomplete template. The logic for this function body should be implemented. The function APIs, in this case, will help you perform elementary operations such as reading and writing lines from text files. 
 
 ## Course Material
 

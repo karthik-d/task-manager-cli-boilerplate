@@ -85,8 +85,8 @@ On a command line terminal,
    ```
    ./task
    ```
-
-- [Follow these instructions](./INSTRUCTIONS.md) to complete the project.
+> [!NOTE]
+> Once the boilerplate is set up locally, [follow these instructions](./INSTRUCTIONS.md) to complete the project.
 
 ## A Note about `/` for Windows Users
 

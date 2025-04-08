@@ -4,9 +4,13 @@ This is a guided poject, designed for a C programming course, that tests partici
 
 > A complete project description can be found in [description.md](./description.md). The specification for this problem is laid out below, and automated test-cases have been written down to test the application at each developmental stage. Since we haven’t actually implemented anything yet, the tests are currently failing. You have to solve the problem by implementing the application to get all the tests to pass. 
 
-The code for this capstone project has been partially implemented; the boilerplates for atomic operations on tasks, such as add, delete, mark as done, are provided and need to be completed, and all the fundamental operations on files and structures you will need have been composed as function APIs for you to understand and use while concretizing the boilerplates. 
+## Outline
 
-The function APIs allow you to perform specific operations that will constitute your atomic operations; for instance, to complete the `./task add` command (an atomic operation), the relevant `task_add()` function is defined as a (functionally) incomplete template. The logic for this function - read task, wrap task into structure, and write to file - should be implemented. In this case, you might find the function APIs useful to perform elementary operations such as writing lines to text files, composing a structure using the task specification, displaying a task, etc. 
+The code for this capstone project has been partially implemented; the boilerplates for atomic operations on tasks, such as add, delete, mark as done, etc. are provided. All fundamental operations interfacing with files and structures you will need for this project are provided as function APIs for you to parse and comprehend. Your task is to apply these provided APIs to concretize the task manager boilerplate into a working application. [description.md](./description.md) provides a walkthrough to help you implement the boilerplate step-by-step. Upon completing each step, you can run the unit tests to verify that you're implementation handles all test cases for that feature correctly.
+
+The function APIs allow you to perform specific operations that will constitute your atomic task manager operations; for instance, to complete the `./task add` command (an atomic operation), the relevant `task_add()` function is defined as a (functionally) incomplete template. The logic for this function - read task, wrap task into structure, and write to file - should be implemented. In this case, you might find the function APIs useful to perform elementary operations such as writing lines to text files, composing a structure using the task specification, displaying a task, etc. 
+
+Scroll down for instructions to set up the coding environment locally!
 
 ## Course Material
 
